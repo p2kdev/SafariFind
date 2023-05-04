@@ -14,18 +14,14 @@
 	%new
 	- (void)safariFind_addGestureRecognizer {
 
+		UIBarButtonItem *shareItem;
 		if (@available(iOS 15, *))
-		{
-			UIBarButtonItem *shareItem = [[[self primaryBar] barRegistration] valueForKey:@"_shareItem"];
-			UILongPressGestureRecognizer *safariFindGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(safariFind_gestureRecognizerDidFire)];
-			[[shareItem valueForKey:@"_view"] addGestureRecognizer:safariFindGestureRecognizer];
-		}
+			shareItem = [[[self primaryBar] barRegistration] valueForKey:@"_shareItem"];
 		else
-		{
-			UIBarButtonItem *shareItem = [[[self bottomToolbar] barRegistration] valueForKey:@"_shareItem"];
-			UILongPressGestureRecognizer *safariFindGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(safariFind_gestureRecognizerDidFire)];
-			[[shareItem valueForKey:@"_view"] addGestureRecognizer:safariFindGestureRecognizer];
-		}
+			shareItem = [[[self bottomToolbar] barRegistration] valueForKey:@"_shareItem"];		
+		
+		UILongPressGestureRecognizer *safariFindGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(safariFind_gestureRecognizerDidFire)];
+		[[shareItem valueForKey:@"_view"] addGestureRecognizer:safariFindGestureRecognizer];		
 	}
 
 	%new

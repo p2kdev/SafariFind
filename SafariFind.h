@@ -23,3 +23,8 @@
 @interface SFBarButtonItemLongPressGestureRecognizer : UILongPressGestureRecognizer
     - (void)safariFind_gestureRecognizerDidFire;
 @end
+
+@interface UIBarButtonItem (SafariFind)
+    @property BOOL _sf_longPressEnabled;
+    @property NSArray* _gestureRecognizers;
+@end
