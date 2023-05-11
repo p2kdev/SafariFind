@@ -20,11 +20,17 @@
     - (void)safariFind_gestureRecognizerDidFire;
 @end
 
-@interface SFBarButtonItemLongPressGestureRecognizer : UILongPressGestureRecognizer
-    - (void)safariFind_gestureRecognizerDidFire;
-@end
-
 @interface UIBarButtonItem (SafariFind)
     @property BOOL _sf_longPressEnabled;
     @property NSArray* _gestureRecognizers;
+@end
+
+@interface UIControl (SafariFind)
+    @property BOOL contextMenuEnabled;
+@end
+
+@interface _UIModernBarButton : UIButton
+@end
+
+@interface _UIButtonBarButton : UIControl
 @end
