@@ -1,5 +1,6 @@
 @interface BrowserController
 - (void)findKeyPressed;
+- (void)find:(id)arg1;
 @end
 
 @interface _SFBarManager : NSObject

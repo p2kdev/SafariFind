@@ -20,7 +20,10 @@
 
 	%new
 	- (void)safariFind_gestureRecognizerDidFire {
-		[[self delegate] findKeyPressed];
+		if (@available(iOS 16, *))
+			[[self delegate] find:nil];
+		else
+			[[self delegate] findKeyPressed];
 	}
 
 %end
