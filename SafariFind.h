@@ -1,6 +1,16 @@
 @interface BrowserController
-- (void)findKeyPressed;
-- (void)find:(id)arg1;
+    - (void)findKeyPressed;
+    - (void)find:(id)arg1;
+    - (void)createNewTab;
+    - (void)openNewTab:(id)arg1;
+@end
+
+@interface UIView (Private)
+-(id)_viewControllerForAncestor;
+@end
+
+@interface CapsuleNavigationBarViewController : UIViewController
+    -(BrowserController*)customNextResponder;
 @end
 
 @interface _SFBarManager : NSObject
@@ -11,27 +21,13 @@
 
 @interface BrowserToolbar: UIToolbar
     @property SFBarRegistration *barRegistration;
+    -(void)sf_performAction:(int)action;
+    -(void)findOnPage;
+    -(void)openNewTab;
 @end
 
 @interface BrowserRootViewController: UIViewController
     @property BrowserController *delegate;
     @property BrowserToolbar *bottomToolbar;
     @property BrowserToolbar *primaryBar;
-    - (void)safariFind_addGestureRecognizer;
-    - (void)safariFind_gestureRecognizerDidFire;
-@end
-
-@interface UIBarButtonItem (SafariFind)
-    @property BOOL _sf_longPressEnabled;
-    @property NSArray* _gestureRecognizers;
-@end
-
-@interface UIControl (SafariFind)
-    @property BOOL contextMenuEnabled;
-@end
-
-@interface _UIModernBarButton : UIButton
-@end
-
-@interface _UIButtonBarButton : UIControl
 @end
